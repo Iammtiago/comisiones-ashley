@@ -4,9 +4,9 @@ Registro personal de ventas y comisiones fijas en dólares, con quincenas config
 
 ## Requisitos
 
-- Node.js 22.13+ (recomendado Node 24 LTS) y npm.
+- Node.js 24 LTS (24.x) y npm.
 - Un servidor Node con disco persistente para SQLite. No desplegar la base SQLite en un sistema de archivos efímero (por ejemplo una función serverless).
-- En Windows, usar Node LTS; si `better-sqlite3` necesita compilarse, instalar las herramientas C++ de Visual Studio y Python. npm conserva la verificación TLS e integridad.
+- En Windows, usar Node 24 LTS; si `better-sqlite3` necesita compilarse, instalar las herramientas C++ de Visual Studio y Python. npm conserva la verificación TLS e integridad.
 
 ## Instalar y ejecutar
 

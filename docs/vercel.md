@@ -26,3 +26,7 @@ Una vez desplegada, entrar con ashley/ashley y crear la primera quincena. La cla
 - Verificar acceso recordado, edición con clave y cierre de sesión.
 
 El código listo para Vercel no demuestra un despliegue: se requiere una cuenta autenticada y base remota configurada. La preparación local se valida con npm run build y npm run test:api. La prueba real en Turso/Vercel queda pendiente hasta disponer de acceso.
+
+## Versión de Node
+
+El proyecto fija Node.js `24.x` en package.json y `.nvmrc`. El rango anterior `>=22.13.0` permitió que Vercel eligiera Node 26, incompatible con better-sqlite3 11.10.0. La instalación fallaba antes de ejecutar las migraciones o contactar con Turso. Conservar Node 24.x en la configuración del proyecto. Las advertencias de paquetes transitivos obsoletos no fueron la causa de ese fallo.
