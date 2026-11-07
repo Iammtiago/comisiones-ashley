@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+  engineType = "client"
+}
+datasource db {
+  provider = "sqlite"
+  url = env("DATABASE_URL")
+}
+model Account {
+  id Int @id @default(1)
+  username String @unique @default("ashley")
+  passwordHash String
+  editHash String
+  hideTotal Boolean @default(false)
+  timezone String @default("America/Caracas")
+  sessions Session[]
+}
+model Session {
+  id String @id
+  tokenHash String @unique
+  createdAt DateTime @default(now())
+  accountId Int
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+}
+model Period {
+  id String @id @default(cuid())
+  name String
+  start String
+  end String
+  closed Boolean @default(false)
+  sales Sale[]
+  createdAt DateTime @default(now())
+  @@index([start, end])
+}
+model Sale {
+  id String @id @default(cuid())
+  invoice String
+  commission Int
+  customer String @default("")
+  description String @default("")
+  total Int?
+  payment String @default("")
+  date String
+  periodId String
+  period Period @relation(fields: [periodId], references: [id], onDelete: Restrict)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([periodId, date])
+  @@index([invoice])
+}
+model Attempt {
+  key String @id
+  count Int @default(0)
+  resetAt DateTime
+}
