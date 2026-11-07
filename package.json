@@ -9,13 +9,17 @@
     "start": "next start --hostname 0.0.0.0",
     "db:generate": "prisma generate",
     "db:deploy": "prisma migrate deploy",
-    "test": "node --test tests/domain.test.mjs",
+    "test": "node --test tests/domain.test.mjs tests/migrations.test.mjs",
     "test:api": "node --test tests/api.test.mjs",
     "postinstall": "prisma generate",
-    "setup": "node scripts/setup.mjs"
+    "setup": "node scripts/setup.mjs",
+    "db:remote": "node scripts/migrate-remote.mjs",
+    "vercel-build": "prisma generate && npm run db:remote && next build"
   },
   "dependencies": {
+    "@libsql/client": "^0.18.0",
     "@prisma/adapter-better-sqlite3": "^6.19.0",
+    "@prisma/adapter-libsql": "^6.19.0",
     "@prisma/client": "^6.19.0",
     "dotenv": "^18.0.9",
     "lucide-react": "^1.70.0",

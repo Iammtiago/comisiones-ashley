@@ -85,3 +85,7 @@ Si `programacion` está en otra ubicación, cambia la ruta. La nube no puede cre
 ## Ver desde el teléfono
 
 El servidor debe tener una URL HTTPS pública con disco persistente. Un enlace de túnel, cuando la red lo permita, es temporal: depende de que esta máquina y el proceso sigan activos. Una URL local de esta máquina no se puede abrir desde el teléfono. Añadir a inicio desde Safari/Chrome permite abrir la app con apariencia independiente; no proporciona uso sin conexión.
+
+## Vercel
+
+El proyecto está preparado para Vercel con SQLite remoto en Turso. Consulta [la guía de despliegue](docs/vercel.md). Es necesario configurar `TURSO_DATABASE_URL` y `TURSO_AUTH_TOKEN` en Vercel; un archivo SQLite local no conserva escrituras entre ejecuciones de sus funciones. El despliegue real requiere acceso autenticado y una base remota configurada.
