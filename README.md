@@ -50,7 +50,7 @@ En Ajustes puedes cambiar ambas contraseñas usando la contraseña actual de acc
 
 ## SQLite y copias
 
-`DATABASE_URL` en `.env` usa `file:./data/app.db`, resuelto desde la raíz del proyecto por el adaptador oficial de Prisma. No guardar `.env` o los archivos de `data/` en Git. Para una copia de seguridad completa, detener el servidor y copiar la base a un lugar seguro. CSV sirve para consultar/exportar ventas, no para restaurar quincenas y credenciales.
+`DATABASE_URL` en `.env` usa `file:./data/app.db`, resuelto desde la raíz del proyecto por el adaptador oficial de Prisma. Esta entrega incluye en Git el `.env` con la ruta de SQLite y una base inicial vacía, por petición del propietario. Las dependencias y la compilación se regeneran con npm. Para una copia de seguridad completa, detener el servidor y copiar la base a un lugar seguro. CSV sirve para consultar/exportar ventas, no para restaurar quincenas y credenciales.
 
 Prisma usa su compilador JavaScript y el adaptador oficial `@prisma/adapter-better-sqlite3`. La CLI emplea su motor WASM con el modo de adaptadores de Prisma 6.19; los paquetes se obtienen con integridad npm. Esto evita descargar motores nativos de Prisma en este entorno restringido. Las migraciones SQL están versionadas.
 
@@ -68,7 +68,7 @@ La interfaz fue comprobada con Chromium/Playwright a 390 × 844 y 1440 × 1000: 
 
 ## Carpeta en Windows
 
-Desde PowerShell, si ya tienes este código disponible en GitHub, guarda tu copia en la carpeta `programacion` de tu usuario:
+Desde PowerShell, guarda tu copia en la carpeta `programacion` de tu usuario:
 
 ```powershell
 New-Item -ItemType Directory -Force "$env:USERPROFILE\programacion" | Out-Null
@@ -80,7 +80,7 @@ npm run setup
 npm run dev
 ```
 
-Si `programacion` está en otra ubicación, cambia la ruta. La nube no puede crear carpetas directamente en tu laptop. Esta entrega no presupone que los cambios locales hayan sido subidos a GitHub.
+Si `programacion` está en otra ubicación, cambia la ruta. La nube no puede crear carpetas directamente en tu laptop. El código de esta entrega está subido a la rama `main` del repositorio.
 
 ## Ver desde el teléfono
 
