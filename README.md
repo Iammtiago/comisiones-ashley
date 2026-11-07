@@ -89,3 +89,9 @@ El servidor debe tener una URL HTTPS pública con disco persistente. Un enlace d
 ## Vercel
 
 El proyecto está preparado para Vercel con SQLite remoto en Turso. Consulta [la guía de despliegue](docs/vercel.md). Es necesario configurar `TURSO_DATABASE_URL` y `TURSO_AUTH_TOKEN` en Vercel; un archivo SQLite local no conserva escrituras entre ejecuciones de sus funciones. El despliegue real requiere acceso autenticado y una base remota configurada.
+
+### Comprobar la vista móvil
+
+Con el servidor iniciado (`npm run dev -- --port 3002`), ejecuta `npm run test:mobile` para Chromium o `npm run test:mobile -- webkit` para WebKit. Requiere los navegadores de Playwright y sus bibliotecas de sistema (`npx playwright install --with-deps chromium webkit`). Puedes indicar otra URL con `MOBILE_TEST_URL` y un Chromium instalado con `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
+
+La prueba recorre Ventas, filtros, quincenas, formulario de venta y ajustes en anchos de 320, 360, 375, 390, 430 y 768 píxeles. Comprueba espacio suficiente para las fechas, edición de sus valores y ausencia de desbordamiento horizontal. Intercepta la API con datos de prueba y no escribe ventas ni quincenas en la base.

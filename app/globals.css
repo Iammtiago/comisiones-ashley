@@ -112,6 +112,8 @@ input,
 textarea,
 select {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   border: 1px solid #bcd3e4;
   background: rgba(255, 255, 255, 0.58);
   border-radius: 12px;
@@ -121,6 +123,19 @@ select {
   transition:
     border-color 0.15s,
     box-shadow 0.15s;
+}
+/* Native date controls must fit their field, including Safari's date editor. */
+input[type="date"] {
+  display: block;
+  min-inline-size: 0;
+  inline-size: 100%;
+}
+input[type="date"]::-webkit-date-and-time-value {
+  min-height: 1.5em;
+  text-align: left;
+}
+input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
 }
 input::placeholder,
 textarea::placeholder {
@@ -744,7 +759,7 @@ tr:last-child td {
 }
 .form-pair {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 .form-note {
@@ -869,7 +884,11 @@ tr:last-child td {
   min-height: 43px;
 }
 .date-filters {
-  display: flex;
+  width: 352px;
+  max-width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 .date-filters input {
@@ -1676,6 +1695,38 @@ tr:last-child td {
   }
   .login-card h1 {
     font-size: 30px;
+  }
+}
+@media (max-width: 760px) {
+  /* Keep editable controls readable and prevent focus zoom on iOS. */
+  .search-field input,
+  .date-filters input,
+  .period-select,
+  .filter-top .period-select,
+  .timezone-field select {
+    font-size: 16px;
+  }
+  .filter-top {
+    flex-wrap: wrap;
+  }
+  .filter-top .period-select {
+    flex: 1 1 200px;
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+@media (max-width: 480px) {
+  .form-pair,
+  .date-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .form-actions {
+    flex-wrap: wrap;
+  }
+  .form-actions .button {
+    flex: 1 1 140px;
+    min-width: 0;
+    white-space: normal;
   }
 }
 @media (max-width: 360px) {

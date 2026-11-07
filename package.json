@@ -14,7 +14,8 @@
     "postinstall": "prisma generate",
     "setup": "node scripts/setup.mjs",
     "db:remote": "node scripts/migrate-remote.mjs",
-    "vercel-build": "prisma generate && npm run db:remote && next build"
+    "vercel-build": "prisma generate && npm run db:remote && next build",
+    "test:mobile": "node tests/mobile.mjs"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",
