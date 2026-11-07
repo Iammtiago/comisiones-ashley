@@ -10,4 +10,3 @@ data/
 *.db-shm
 playwright-report/
 test-results/
-.vercel/
